@@ -1,0 +1,56 @@
+table {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid #98bf21;
+	padding: 3px 7px 2px 7px;
+}
+
+tr.footer, th {
+    font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #A7C942;
+    color: #ffffff;
+}
+
+tr.subHeader td {
+	font-size: 1.1em;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+tr.alternateSubHeader td {
+	font-size: 1.1em;
+    color: #000000;
+    background-color: #EAF2D3;
+}
+
+tr.row td {
+	font-size: 1em;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+tr.alternateRow td {
+	font-size: 1em;
+    color: #000000;
+    background-color: #EAF2D3;
+}
+
+tr.subFooter td {
+	font-size: 1em;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+tr.alternateSubFooter td {
+	font-size: 1em;
+    color: #000000;
+    background-color: #EAF2D3;
+}
+

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2018 (x64) (http://www.altova.com) by Bolagsverket (Bolagsverket) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1" jxb:version="1.0">
+	<xsd:annotation>
+		<xsd:documentation></xsd:documentation>
+		<xsd:appinfo>
+			<jxb:schemaBindings>
+				<jxb:nameXmlTransform>
+					<jxb:elementName suffix="Element"/>
+				</jxb:nameXmlTransform>
+			</jxb:schemaBindings>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:element name="settings">
+		<xsd:annotation>
+			<xsd:documentation>Comment describing your root element</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="windows">
+					<xsd:annotation>
+						<xsd:documentation/>
+						<xsd:appinfo>
+							<jxb:property name="WindowList"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="window" minOccurs="0" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:documentation/>
+									<xsd:appinfo>
+										<jxb:property name="windows"/>
+									</xsd:appinfo>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="properties">
+					<xsd:annotation>
+						<xsd:documentation/>
+						<xsd:appinfo>
+							<jxb:property name="propertyList"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="property" minOccurs="0" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:documentation/>
+									<xsd:appinfo>
+										<jxb:property name="properties"/>
+									</xsd:appinfo>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="window">
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="x" type="xsd:int" use="required"/>
+			<xsd:attribute name="y" type="xsd:int" use="required"/>
+			<xsd:attribute name="width" type="xsd:int" use="required"/>
+			<xsd:attribute name="height" type="xsd:int" use="required"/>
+			<xsd:attribute name="visible" type="xsd:boolean" default="false"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="property">
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="value" type="xsd:string" use="required"/>
+			<xsd:attribute name="type" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2018 (x64) (http://www.altova.com) by Bolagsverket (Bolagsverket) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1" jxb:version="2.1">
+	<xsd:annotation>
+		<xsd:documentation></xsd:documentation>
+		<xsd:appinfo>
+			<jxb:globalBindings collectionType="java.util.Vector"/>
+			<jxb:schemaBindings>
+				<jxb:nameXmlTransform>
+					<jxb:typeName prefix="DAO"/>
+					<jxb:elementName prefix="DAO"/>
+				</jxb:nameXmlTransform>
+			</jxb:schemaBindings>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:element name="competition">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="program">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="stage" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:appinfo>
+										<jxb:property name="stages"/>
+									</xsd:appinfo>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="type" type="xsd:string" use="required"/>
+						<xsd:attribute name="title" type="xsd:string" use="required"/>
+						<xsd:attribute name="date" type="xsd:string" use="required"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element ref="scoreboard"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="stage">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="competitors">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<jxb:property name="competitorList"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="competitor" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:appinfo>
+										<jxb:property name="competitors"/>
+									</xsd:appinfo>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="strings">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<jxb:property name="stringList"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="string" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:appinfo>
+										<jxb:property name="strings"/>
+									</xsd:appinfo>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="teams">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<jxb:property name="teamList"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="team" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:appinfo>
+										<jxb:property name="teams"/>
+									</xsd:appinfo>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="index" type="xsd:int" use="required"/>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="shooterCount" type="xsd:int" use="required"/>
+			<xsd:attribute name="firstCall" type="xsd:string" use="required"/>
+			<xsd:attribute name="nextCallInterval" type="xsd:int" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="string">
+		<xsd:complexType>
+			<xsd:attribute name="index" type="xsd:int" use="required"/>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="shotCount" type="xsd:int" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="scoreboard">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="scorecard" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<jxb:property name="scores"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="scorecard">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="stageScore" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<jxb:property name="scores"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="shooterID" type="xsd:int" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="stageScore">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="stringScore" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<jxb:property name="scores"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="stageIndex" type="xsd:int" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="stringScore">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="shotScore" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<jxb:property name="scores"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="stringIndex" type="xsd:int" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="shotScore">
+		<xsd:complexType>
+			<xsd:attribute name="shotIndex" type="xsd:int" use="required"/>
+			<xsd:attribute name="score" type="xsd:int" use="required"/>
+			<xsd:attribute name="bullsEye" type="xsd:boolean" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="team">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="competitor" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:int" use="required"/>
+			<xsd:attribute name="title" use="required"/>
+			<xsd:attribute name="callTime"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="competitor">
+		<xsd:complexType>
+			<xsd:attribute name="shooterID" type="xsd:int" use="required"/>
+			<xsd:attribute name="teamIndex" type="xsd:int" use="required"/>
+			<xsd:attribute name="laneIndex" type="xsd:int" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

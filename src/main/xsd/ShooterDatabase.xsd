@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2018 (x64) (http://www.altova.com) by Bolagsverket (Bolagsverket) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1" jxb:version="2.1">
+	<xsd:annotation>
+		<xsd:documentation></xsd:documentation>
+		<xsd:appinfo>
+			<jxb:globalBindings collectionType="java.util.Vector"/>
+			<jxb:schemaBindings>
+				<jxb:nameXmlTransform>
+					<jxb:typeName prefix="DAO"/>
+					<jxb:elementName prefix="DAO"/>
+				</jxb:nameXmlTransform>
+			</jxb:schemaBindings>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:element name="shooterDatabase">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="shooters">
+					<xsd:annotation>
+						<xsd:documentation/>
+						<xsd:appinfo>
+							<jxb:property name="shooterList"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="shooter" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:appinfo>
+										<jxb:property name="shooters"/>
+									</xsd:appinfo>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="units">
+					<xsd:annotation>
+						<xsd:documentation/>
+						<xsd:appinfo>
+							<jxb:property name="unitList"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="unit" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:appinfo>
+										<jxb:property name="units"/>
+									</xsd:appinfo>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="groups">
+					<xsd:annotation>
+						<xsd:documentation/>
+						<xsd:appinfo>
+							<jxb:property name="groupList"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="group" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:appinfo>
+										<jxb:property name="groups"/>
+									</xsd:appinfo>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="shooter">
+		<xsd:complexType>
+			<xsd:attribute name="id" type="xsd:int" use="required"/>
+			<xsd:attribute name="forename" type="xsd:string" use="required"/>
+			<xsd:attribute name="surname" type="xsd:string" use="required"/>
+			<xsd:attribute name="unitID" type="xsd:string" use="required"/>
+			<xsd:attribute name="lefthanded" type="xsd:boolean" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="unit">
+		<xsd:complexType>
+			<xsd:attribute name="id" type="xsd:string" use="required"/>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="groupID" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="group">
+		<xsd:complexType>
+			<xsd:attribute name="id" type="xsd:string" use="required"/>
+			<xsd:attribute name="short" type="xsd:string" use="required"/>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

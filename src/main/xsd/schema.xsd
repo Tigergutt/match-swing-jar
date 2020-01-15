@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2018 (x64) (http://www.altova.com) by Bolagsverket (Bolagsverket) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1" jxb:version="2.1">
+	<xs:annotation>
+		<xs:appinfo>
+			<jxb:globalBindings collectionType="java.util.Vector"/>
+			<jxb:schemaBindings>
+				<jxb:package name="se.melsom.schema"/>
+				<jxb:nameXmlTransform>
+					<jxb:typeName prefix="DAO"/>
+					<jxb:elementName prefix="DAO"/>
+				</jxb:nameXmlTransform>
+			</jxb:schemaBindings>
+		</xs:appinfo>
+	</xs:annotation>
+	
+	<xs:element name="competition">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="program">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="stage" type="stage" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>
+										<jxb:property name="stages"/>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="type" type="xs:string"/>
+						<xs:attribute name="title" type="xs:string"/>
+						<xs:attribute name="date" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="competitorList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="competitor" type="competitor" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>
+										<jxb:property name="competitors"/>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="scoreboard" type="scoreboard"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="shooterData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="shooterList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="shooter" type="shooter" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>
+										<jxb:property name="shooters"/>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="unitList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="unit" type="unit" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>
+										<jxb:property name="units"/>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="groupList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="group" type="group" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>
+										<jxb:property name="groups"/>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="shooter">
+		<xs:attribute name="id" type="xs:int"/>
+		<xs:attribute name="forename" type="xs:string"/>
+		<xs:attribute name="surname" type="xs:string"/>
+		<xs:attribute name="unitID" type="xs:string"/>
+		<xs:attribute name="lefthanded" type="xs:boolean" default="false"/>
+	</xs:complexType>
+	
+	<xs:complexType name="unit">
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="name"/>
+		<xs:attribute name="groupID" type="xs:string"/>
+	</xs:complexType>
+	
+	<xs:complexType name="group">
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="name" type="xs:string"/>
+	</xs:complexType>
+	
+	<xs:complexType name="stage">
+		<xs:sequence>
+			<xs:element name="string" type="string" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<jxb:property name="strings"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="index" type="xs:int" default="-1"/>
+		<xs:attribute name="name" type="xs:string" default=""/>
+		<xs:attribute name="shooterCount" type="xs:int" default="10"/>
+		<xs:attribute name="firstCall" type="xs:string" default=""/>
+		<xs:attribute name="nextCallInterval" type="xs:string" default=""/>
+	</xs:complexType>
+	
+	<xs:complexType name="string">
+		<xs:attribute name="index" type="xs:int" default="-1"/>
+		<xs:attribute name="name" type="xs:string" default=""/>
+		<xs:attribute name="shotCount" type="xs:int" default="5"/>
+	</xs:complexType>
+
+	<xs:complexType name="competitor">
+		<xs:attribute name="shooterID" type="xs:int"/>
+	</xs:complexType>
+
+	<xs:complexType name="scoreboard">
+	<xs:sequence>
+		<xs:element name="scorecard" type="scorecard" maxOccurs="unbounded">
+			<xs:annotation>
+				<xs:appinfo>
+					<jxb:property name="scores" />
+				</xs:appinfo>
+			</xs:annotation>
+		</xs:element>
+	</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="scorecard">
+		<xs:sequence>
+			<xs:element name="stageScore" type="stageScore" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<jxb:property name="scores"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="shooterID" type="xs:int" default="-1"/>
+	</xs:complexType>
+	
+	<xs:complexType name="stageScore">
+		<xs:sequence>
+			<xs:element name="stringScore" type="stringScore" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<jxb:property name="scores"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="stageIndex" type="xs:int" default="-1"/>
+		<xs:attribute name="teamIndex" type="xs:int" default="-1"/>
+		<xs:attribute name="laneIndex" type="xs:int" default="-1"/>
+	</xs:complexType>
+	
+	<xs:complexType name="stringScore">
+		<xs:sequence>
+			<xs:element name="shotScore" type="shotScore" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<jxb:property name="scores"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="stringIndex" type="xs:int" default="-1"/>
+	</xs:complexType>
+	
+	<xs:complexType name="shotScore">
+		<xs:attribute name="shotIndex" type="xs:int" default="-1"/>
+		<xs:attribute name="score" type="xs:int" default="0"/>
+	</xs:complexType>
+</xs:schema>
